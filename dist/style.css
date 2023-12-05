@@ -1,0 +1,34 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+#container{
+  background-color: red;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 100px 1fr;
+  margin:0;
+  padding:0;
+}
+
+#header{
+  background-color: palegreen;
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+
+#sidebar{
+  background-color: blue;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  height: 70vh;
+}
+
+#main{
+  background-color: pink;
+  grid-column: 2/3;
+  grid-row: 2/3;
+
+}
