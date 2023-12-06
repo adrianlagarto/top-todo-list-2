@@ -1,4 +1,5 @@
 import page from "./page";
+import tabs from "./tabs";
 
 
 function pageLoad () {

@@ -24,11 +24,25 @@
   grid-column: 1/2;
   grid-row: 2/3;
   height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:1rem;
+  padding:1rem;
+}
+
+#project-container{
+  background-color: red;
 }
 
 #main{
   background-color: pink;
   grid-column: 2/3;
   grid-row: 2/3;
+}
 
+#notes{
+  background-color: #fff;
+  grid-column: 2/3;
+  grid-row: 2/3;
 }

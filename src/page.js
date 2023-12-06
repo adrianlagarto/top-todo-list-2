@@ -16,7 +16,7 @@ function page() {
 
   /*Main Div*/
   main.setAttribute('id', 'main');
-  main.textContent = 'main'
+  //main.textContent = 'main'
 
 
   /*SideBar Div */
