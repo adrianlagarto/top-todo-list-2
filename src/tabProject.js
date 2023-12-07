@@ -1,6 +1,7 @@
-
+import projectPopUp from "./projectPopUp";
 
 let projectArray = [];
+// let Object = {};
 
 const tabProject = () => {
   const container = document.querySelector('#container');
@@ -28,52 +29,73 @@ const tabProject = () => {
   const addProjectBtn = document.querySelector('#add-project-btn');
 
   addProjectBtn.addEventListener('click', () => {
+
+    //const pressExit = document.querySelector('#exit');
+    //console.log(pressExit);
     //creates project that has an empty array
     //name the project in the form
+    projectPopUp();
+    const pressConfirm = document.querySelector('#confirm');
+    console.log(pressConfirm);
 
-    //Project Title
-    const projectTitle = document.createElement('input');
-    projectTitle.setAttribute('id', 'project-title');
-    pageContent.appendChild(projectTitle);
+    //get the info from the pop up and store it
 
-    //Submit Project Title
-    const submitProjectTitle = document.createElement('button');
-    submitProjectTitle.setAttribute('id', 'submit-project-title');
-    submitProjectTitle.textContent = 'submit-project';
+    pressConfirm.addEventListener('click', () => {
+      const container = document.querySelector('#container');
+      const popUpBox = document.querySelector('#pop-up-box-1');
+      let title = (document.querySelector('#title')).value;
+      let input = document.querySelectorAll('.info-input');
 
-    //AddProjectBtn info input container
-    const AddProjectContainer = document.createElement('div');
-    AddProjectContainer.appendChild(projectTitle);
-    AddProjectContainer.appendChild(submitProjectTitle);
-    pageContent.appendChild(AddProjectContainer);
+      //empty array for the Todos for project
+      //checks if project name is taken
+      for(let i = 0;i < projectArray.length;i++){
+        let projectName = projectArray[i].title;
+        if(title == projectName){
+          return
+        }
+      }
 
-    //Press Submit
-    const submitTitle = document.querySelector('#submit-project-title');
-    submitTitle.addEventListener('click', () => {
-      let input = document.querySelector('#project-title');
 
-      let newProject = new project(input);
-        projectArray.push(newProject);
-        renderProject();
-        console.log(projectArray)
+      //create the name of the project with empty arr
+      let newProject = new project(title);
+      input.value = '';
 
-        console.log(input.value);
-        input.value = '';
-    });
+      let createProjectContent = {
+        newProject,
+        arr: []
+      }
+      projectArray.push(createProjectContent);
+
+      console.log(projectArray);
+ 
+      renderProject();
+
+      container.removeChild(popUpBox);
+    })
+
+
+
   
   });
-
+  renderProject();
 }
 
 function renderProject() {
-  let projectContainer = document.querySelector('#project-container');
-  projectContainer.innerHTML = '';
+  const allProject = document.querySelector('#project-container')
+
+  allProject.innerHTML = '';
+  
   for(let i = 0; i < projectArray.length; i++){
-    let projectItem = projectArray[i];
-    let projectItemEl = document.createElement('div');
-    projectItemEl.textContent = `Title is ${projectItem.title}`
-    projectContainer.appendChild(projectItemEl);
-    console.log(projectItem.title);
+    let projectItem = projectArray[i].newProject;
+
+    const cardContainer = document.createElement('div');
+    const titleDiv = document.createElement('div');
+    cardContainer.setAttribute('id', 'card-container')
+    titleDiv.textContent = `${projectItem.title}`;
+    cardContainer.appendChild(titleDiv);
+    allProject.appendChild(cardContainer);
+    //pageContent.appendChild(allProject);
+    //main.appendChild(pageContent);
   }
 }
 

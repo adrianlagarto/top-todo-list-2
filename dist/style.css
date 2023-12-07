@@ -41,6 +41,28 @@
   grid-row: 2/3;
 }
 
+#pop-up-box-1{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 200px;
+  height: 100px;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  display: grid;
+}
+
+#pop-up-box-1 form{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 150px;
+  font-size: 15px;
+}
+
 #notes{
   background-color: #fff;
   grid-column: 2/3;
