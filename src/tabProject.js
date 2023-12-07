@@ -11,11 +11,14 @@ const tabProject = () => {
   main.appendChild(pageContent);
   //Base
 
+  //Project ToDos container
+  
+
   //Project Container
   const createProjectContainer = document.createElement('div');
   createProjectContainer.setAttribute('id', 'project-container');
   //const projectContainer = document.querySelector('#project-container');
-  createProjectContainer.textContent = 'hu'
+  createProjectContainer.textContent = 'All Projects'
 
   pageContent.appendChild(createProjectContainer);
 
@@ -41,6 +44,8 @@ const tabProject = () => {
     //get the info from the pop up and store it
 
     pressConfirm.addEventListener('click', () => {
+      //preventDefault();
+
       const container = document.querySelector('#container');
       const popUpBox = document.querySelector('#pop-up-box-1');
       let title = (document.querySelector('#title')).value;
@@ -60,14 +65,19 @@ const tabProject = () => {
       let newProject = new project(title);
       input.value = '';
 
+      //let titleName = `${newProject.value}`
+      let titleName = Object.values(newProject);
+      newProject.arr = [];
+
       let createProjectContent = {
         newProject,
-        arr: []
+        [`${titleName}`]: newProject
       }
       projectArray.push(createProjectContent);
 
-      console.log(projectArray);
- 
+      //console.log(projectArray);
+      //console.log('^');
+
       renderProject();
 
       container.removeChild(popUpBox);
@@ -94,6 +104,8 @@ function renderProject() {
     titleDiv.textContent = `${projectItem.title}`;
     cardContainer.appendChild(titleDiv);
     allProject.appendChild(cardContainer);
+    console.log(projectArray[i]);
+    console.log('^');
     //pageContent.appendChild(allProject);
     //main.appendChild(pageContent);
   }
@@ -101,6 +113,11 @@ function renderProject() {
 
 function project(title) {
   this.title = title
+}
+
+//render Todos from the Project
+function renderTodos() {
+  
 }
 
 
