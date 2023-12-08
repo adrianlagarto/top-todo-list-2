@@ -35,6 +35,12 @@
   background-color: red;
 }
 
+#project-container{
+  display: flex;
+  flex-direction: column;
+  gap:.5rem;
+}
+
 #main{
   background-color: pink;
   grid-column: 2/3;

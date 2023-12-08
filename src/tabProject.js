@@ -11,9 +11,11 @@ const tabProject = () => {
   main.appendChild(pageContent);
   //Base
 
-  //Project ToDos container
+  //Project ToDos container to for rendering
+  const createToDosContainer = document.createElement('div');
+  createToDosContainer.setAttribute('id', 'todos-container');
+  createToDosContainer.textContent = 'Project Todos Container'
   
-
   //Project Container
   const createProjectContainer = document.createElement('div');
   createProjectContainer.setAttribute('id', 'project-container');
@@ -39,7 +41,6 @@ const tabProject = () => {
     //name the project in the form
     projectPopUp();
     const pressConfirm = document.querySelector('#confirm');
-    console.log(pressConfirm);
 
     //get the info from the pop up and store it
 
@@ -67,18 +68,19 @@ const tabProject = () => {
 
       //let titleName = `${newProject.value}`
       let titleName = Object.values(newProject);
-      newProject.arr = [];
+      //newProject.arr = [];
 
       let createProjectContent = {
         newProject,
-        [`${titleName}`]: newProject
+        //[`${titleName}`]: []
       }
       projectArray.push(createProjectContent);
 
-      //console.log(projectArray);
-      //console.log('^');
+      console.log(projectArray);
+      console.log('^^');
 
       renderProject();
+
 
       container.removeChild(popUpBox);
     })
@@ -99,16 +101,25 @@ function renderProject() {
     let projectItem = projectArray[i].newProject;
 
     const cardContainer = document.createElement('div');
-    const titleDiv = document.createElement('div');
-    cardContainer.setAttribute('id', 'card-container')
+    const titleDiv = document.createElement('button');
+    cardContainer.setAttribute('class', 'card-container');
     titleDiv.textContent = `${projectItem.title}`;
     cardContainer.appendChild(titleDiv);
     allProject.appendChild(cardContainer);
+
+    titleDiv.addEventListener('click', (e) => {
+      let btn = e.target.textContent;
+      console.log(btn)
+      //render the project
+      for(let i = 0; i < projectArray.length; i++){
+        //let name = projectArray[i].`${btn}`;
+      }
+    })
     console.log(projectArray[i]);
-    console.log('^');
     //pageContent.appendChild(allProject);
     //main.appendChild(pageContent);
   }
+
 }
 
 function project(title) {
@@ -117,7 +128,10 @@ function project(title) {
 
 //render Todos from the Project
 function renderTodos() {
-  
+  const toDosContainer = document.querySelector('#todos-container');
+  const allProject = document.querySelector('#project-container')
+  allProject.innerHTML = '';
+
 }
 
 
